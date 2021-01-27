@@ -1,6 +1,7 @@
 package com.test.java8;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Test {
@@ -10,18 +11,21 @@ public class Test {
 		
 		int[] arr = {1,2,3,4,5};
 		
+		int j = findInt(arr, p -> p==4, p -> {return (p+1);});
 		//find 
-		findInt(arr, p -> p==3, System.out::println);
+		System.out.println(j);
+		
 		
 
 	}
 	
-	public static void findInt(int[] arr, Predicate<Integer> predicate, Consumer<Integer> consumer) {
+	public static Integer findInt(int[] arr, Predicate<Integer> predicate, Function<Integer, Integer> consumer) {
 		for(int i: arr) {
 			if(predicate.test(i)) {
-				consumer.accept(i);
+				return consumer.apply(i);
 			}
 		}
+		return 0;
 		
 	}
 
