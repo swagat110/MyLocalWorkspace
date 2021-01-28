@@ -2,47 +2,68 @@ package com.test.java8;
 
 import java.util.Arrays;
 
-public class MyArrayList {
+public class MyArrayList <T> {
 	
-	private int capacity;
-	private int current;
-	private int [] array;
-	public int length;
+	private T [] array;
+	private int size;
 	
-	public MyArrayList() {
-		int capacity = 1;
-		int current = 0;
-		array = new int[capacity];
-		length = current;
-	}
-	
-	public int getElement(int index) {
-		if(index<=current)
-			return array[index];
-		else
-			return -1;
-	}
-	
-	public void addElement(int element) {
+	//constructor
+	public MyArrayList(){
 		
-		if(current == capacity) {
-			capacity = 2 * capacity;
-			int [] temp = new int[capacity];
-			for(int i=0;i<current;i++) {
-				temp[i] = array[i];
-				array = temp;
+		size = 0;
+		this.array = (T[])new Object[5];
+		
+	}
+
+	//put
+	public void put(T element) {
+		
+		this.array[size++] = element;
+		
+		//ensureCapacity
+		if(size==array.length) {
+			T [] tmp = (T[])new Object[array.length*2];
+			for(int i=0;i<array.length;i++) {
+				tmp[i] = array[i];
 			}
 			
-			array[current++] = element;
-			length = current;
-			
-		}
+			array = tmp;
+		}	
+	}
+	
+	//get
+	public T get(int index) {
 		
+		if(index<size)
+			return this.array[index];
+		else
+			return null;
 		
 	}
 	
+	//remove
+	public void remove(int index) {
+		if(index>=size)
+			return;
+		for(int i=index;i<array.length-1;i++) {
+			array[i] = array[i+1];
+			
+		}
+		size--;
+	}
+	
+	//getSize
+	public int getSize() {
+		return this.size;
+	}
+	
+	//print
 	public void print() {
-		System.out.println(Arrays.toString(array));
+		System.out.println();
+		for(int i=0;i<size;i++) {
+			System.out.print(array[i]+" " );
+		}
+		System.out.println();
 	}
 
 }

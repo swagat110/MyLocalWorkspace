@@ -11,14 +11,22 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MyArrayList myDynamicArray = new MyArrayList();
-		myDynamicArray.addElement(10);
+		MyArrayList<Integer> myDynamicArray = new MyArrayList<Integer>();
+		myDynamicArray.put(10);
 		myDynamicArray.print();
-		System.out.println(myDynamicArray.length);
-		myDynamicArray.addElement(12);
+		System.out.println(myDynamicArray.getSize());
+		myDynamicArray.put(12);
 		myDynamicArray.print();
-		System.out.println(myDynamicArray.length);
+		System.out.println(myDynamicArray.getSize());
+		myDynamicArray.remove(0);
+		myDynamicArray.print();
+		System.out.println(myDynamicArray.getSize());
+		for(int i=10;i>=0;i--){
+			myDynamicArray.put(i);
+		    }
 		
+		myDynamicArray.print();
+		System.out.println(myDynamicArray.getSize());
 		
 		
 		int[] arr = {1,2,3,4,5};
