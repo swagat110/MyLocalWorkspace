@@ -22,7 +22,10 @@ public class LambdaTest {
 				);
 		
 		//display the list
-		displayConditionally(list,p -> true,p -> System.out.println(p));
+		//displayConditionally(list,p -> true,p -> System.out.println(p));
+		list.stream()
+		.sorted((p1,p2) -> p1.getFirstName().compareTo(p2.getFirstName()))
+		.forEach(System.out::println);
 				
 		
 		//sort the persons on the basis of last name
