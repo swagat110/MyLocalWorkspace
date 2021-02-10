@@ -11,7 +11,9 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		MyArrayList<Integer> myDynamicArray = new MyArrayList<Integer>();
+		System.out.println(Arrays.deepToString(merge(new int[][]{{1,3},{2,6},{8,10},{15,18}})));
+		
+		/*MyArrayList<Integer> myDynamicArray = new MyArrayList<Integer>();
 		myDynamicArray.put(10);
 		myDynamicArray.print();
 		System.out.println(myDynamicArray.getSize());
@@ -31,7 +33,7 @@ public class Test {
 		
 		int[] arr = {1,2,3,4,5};
 		
-		int j = findInt(arr, p -> p==4, p -> {return (p+1);});
+		int j = findInt(arr, p -> p==4, p -> {return (p+1);});*/
 		//find 
 		//System.out.println(j);
 		//reverse("Hello World!");
@@ -40,6 +42,26 @@ public class Test {
 		
 
 	}
+	
+	public static int[][] merge(int[][] intervals) {
+        
+        int[][] result = new int[intervals.length][2];
+        int index=0;
+        for(int i=0;i<intervals.length-1;i++){
+            
+            if(intervals[i+1][0]<=intervals[i][1]){
+                int[] tmp = new int[2];
+                tmp[0] = intervals[i][0];
+                tmp[1] = intervals[i+1][1];
+                result[index++] = tmp;
+                i++;
+            }else{
+                result[index++] = intervals[i];
+            }
+        }
+        
+        return Arrays.copyOf(result, index);
+    }
 	
 	public static void reverse(String str){
 	    if(str==null||str.isEmpty()){

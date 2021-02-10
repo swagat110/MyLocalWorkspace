@@ -28,7 +28,7 @@ public class LambdaTest {
 		.forEach(System.out::println);
 				
 		
-		//sort the persons on the basis of last name
+		//sort the persons on the basis of last namegggg
 		Collections.sort(list, (p1,p2) -> p1.lastName.compareTo(p2.lastName));
 		
 		System.out.println();
