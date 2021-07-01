@@ -50,7 +50,7 @@ public class StringBuilderCustom {
 
 	private boolean increaseSizeRequired(String str) {
 		// TODO Auto-generated method stub
-		return(length+str.length()>this.array.length-1);
+		return(length+str.length()>this.array.length);
 		
 	}
 
@@ -60,8 +60,9 @@ public class StringBuilderCustom {
 		if(end > length)
 			end = length-1;
 		char[] tmp = new char[this.array.length];
-		System.arraycopy(this.array, 0, tmp, 0, start);
-		System.arraycopy(this.array, end+1, tmp, start, length-end);
+		System.arraycopy(this.array, 0, tmp, 0, start);//exclude start index
+		if(!(end==length-1))//2nd part of copy is not needed if end element is being deleted
+			System.arraycopy(this.array, end+1, tmp, start, length-end); // exclude end index
 		length = length - (end-start+1);
 		this.array = tmp;	
 		

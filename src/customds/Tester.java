@@ -1,19 +1,31 @@
 package customds;
 
+import java.util.Arrays;
+
 public class Tester {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		StringBuilderCustom sb1 = new StringBuilderCustom();
-		sb1.append("World is my playground");
+		sb1.append("0123456");
 		System.out.println(sb1.toString());
-		sb1.delete(4, 60);
+		sb1.delete(5, 6);
 		System.out.println(sb1.toString());
 		sb1.append(" My name is John");
 		System.out.println(sb1.toString());
+		showDifference();
 		
+		String s ="541,Tim,Part Time,Accountant";
+		String[] arr = s.split(",",2);
+		System.out.println(Integer.parseInt(arr[0]));
+		System.out.println(arr[1]);
+		
+		
+
+	}
+	
+	public static void showDifference() {
 		long NANOSECOND_IN_MILLISECOND = 1000000;
-        int ONE_MILLION = 1000000;
 
         long startTime = System.nanoTime();
         StringBuilderCustom sb = new StringBuilderCustom();
@@ -34,7 +46,7 @@ public class Tester {
 
         System.out.println("StringBuilder Test ------------------------------------");
         System.out.println("Time elapsed: " + (System.nanoTime() - startTime) / NANOSECOND_IN_MILLISECOND + " milliseconds");
-
+		
 	}
 
 }
